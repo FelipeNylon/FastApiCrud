@@ -5,14 +5,9 @@ import uuid
 from pydantic import BaseModel,Field
 from typing import List
 from passlib.context import CryptContext
-from fastapi.middleware.cors import CORSMiddleware
 from var import DB_NAME, DB_PASS
 import datetime
 
-######## cors origin #####
-origins = [
-    '*'
-]
 
 
 
@@ -81,14 +76,6 @@ class DeleteUser(BaseModel):
 
 app = FastAPI()
 
-############## middlewares
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 
