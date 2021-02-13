@@ -8,7 +8,7 @@ from passlib.context import CryptContext
 from var import *
 import datetime
 import os
-
+import psycopg2
 
 
 ####### password encrypt ###
@@ -17,7 +17,8 @@ pwd_context = CryptContext(schemes=['bcrypt'], deprecated="auto")
 
 
 ########## db config
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
