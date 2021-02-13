@@ -12,6 +12,7 @@ asyncpg = "*"
 psycopg2 = "*"
 passlib = "*"
 bcrypt = "*"
+gunicorn = "*"
 
 [dev-packages]
 
