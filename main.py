@@ -5,9 +5,9 @@ import uuid
 from pydantic import BaseModel,Field
 from typing import List
 from passlib.context import CryptContext
-from var import DB_NAME, DB_PASS
+from var import *
 import datetime
-
+import os
 
 
 
@@ -17,7 +17,7 @@ pwd_context = CryptContext(schemes=['bcrypt'], deprecated="auto")
 
 
 ########## db config
-DATABASE_URL = f"postgresql://postgres:{DB_PASS}@127.0.0.1:5432/{DB_NAME}"
+DATABASE_URL = os.environ.get('DATABASE_URL')
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
